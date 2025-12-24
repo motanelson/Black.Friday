@@ -2,7 +2,7 @@ import struct
 import sys
 
 SECTOR_SIZE = 512
-CLUSTER_SIZE = 4096   # NTFS usa clusters grandes normalmente
+CLUSTER_SIZE = 4096   # MYSYS usa clusters grandes normalmente
 
 def u16(x): return struct.pack("<H", x)
 def u32(x): return struct.pack("<I", x)
@@ -22,7 +22,7 @@ def mkfs_ntfs(img, size_mb):
 
         # Jump
         boot[0:3] = b'\xEB\x52\x90'
-        boot[3:11] = b'NTFS    '
+        boot[3:11] = b'MYSYS   '
 
         boot[11:13] = u16(SECTOR_SIZE)
         boot[13] = sectors_per_cluster
